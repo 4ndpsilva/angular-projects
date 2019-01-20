@@ -1,0 +1,49 @@
+<div class = "container col-md-4 offset-md-4">
+  <h2 class = "text-center">{{title}}</h2>
+ 
+  <form #formConsulta = "ngForm" (ngSubmit) = "onSearch()">
+    <div class = "form-group">
+      <strong><label>Tipo de Veículo</label></strong>
+      <select [(ngModel)] = "filter.tipoVeiculo" (change) = "onSelectTipoVeiculo()" 
+        class = "form-control" required name = "tipoVeiculo">
+        <option></option>
+        <option *ngFor = "let tipo of tipos" value = "{{tipo.valor}}">{{tipo.descricao}}</option>
+      </select>
+    </div>
+
+    <div class = "form-group">
+      <strong><label>Marca</label></strong>
+      <select [(ngModel)] = "filter.marca" (change) = "onSelectMarca()" 
+        class = "form-control" required name = "marca">
+        <option *ngIf = "marcas.length > 0" selected></option>
+        <option *ngFor = "let marca of marcas" value = "{{marca.id}}">{{marca.name}}</option>
+      </select>
+    </div>
+
+    <div class = "form-group">
+      <strong><label>Modelo</label></strong>
+      <select [(ngModel)] = "filter.modelo" (change) = "onSelectModelo()" name = "modelo"
+        class = "form-control" required>
+        <option *ngIf = "modelos.length > 0" selected></option>
+        <option *ngFor = "let modelo of modelos" value = "{{modelo.id}}">{{modelo.name}}</option>
+      </select>
+    </div>
+
+    <div class = "form-group">
+      <strong><label>Ano</label></strong>
+      <select [(ngModel)] = "filter.ano" class = "form-control" name = "ano" required>
+        <option *ngIf = "anos.length > 0" selected></option>
+        <option *ngFor = "let ano of anos" value = "{{ano.id}}">{{ano.name}}</option>
+      </select>
+    </div>
+
+    <div class = "form-row"> 
+      <div class = "col">
+        <button type = "submit" class = "btn btn-primary btn-block" [disabled] = "formConsulta.invalid">Consultar</button>
+      </div>
+      <div class = "col">
+        <button type = "reset" class = "btn btn-primary btn-block" (click) = "reset()">Limpar</button>
+      </div>
+    </div>
+  </form>
+</div>

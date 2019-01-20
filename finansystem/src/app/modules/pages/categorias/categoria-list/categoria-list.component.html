@@ -1,0 +1,22 @@
+<table border = "1">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Descrição</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let categoria of list">
+      <td>{{categoria.id}}</td>
+      <td>{{categoria.descricao}}</td>
+      <td>
+        <a class = "btn btn-primary btn-sm" (click) = "edit(categoria)">Alterar</a>|
+        <a class = "btn btn-danger btn-sm" (click) = "delete(categoria)">Excluir</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p></p>
+<a class = "btn btn-primary btn-sm" (click) = "edit()">Novo</a>

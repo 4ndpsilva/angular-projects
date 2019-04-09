@@ -4,22 +4,22 @@ import { Categoria } from './model/categoria';
 
 @Injectable()
 export class CategoriaService {
-  tipo: string;
+  prefixo: string;
 
   constructor() { 
-    this.tipo = "categoria";
+    this.prefixo = "cat";
   }
 
   save(categoria: Categoria): void {
-    localStorage.setItem(this.tipo+categoria.id, JSON.stringify(categoria));
+    localStorage.setItem(this.prefixo+categoria.id, JSON.stringify(categoria));
   }
 
   delete(id: number): void{
-    localStorage.removeItem(this.tipo+id);
+    localStorage.removeItem(this.prefixo+id);
   }
 
   findById(id: number): Categoria{
-    return JSON.parse(localStorage.getItem(this.tipo+id));
+    return JSON.parse(localStorage.getItem(this.prefixo+id));
   }
 
   listAll(): Array<Categoria>{

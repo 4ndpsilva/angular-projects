@@ -6,7 +6,7 @@ import { CategoriaFormComponent } from './categoria-form/categoria-form.componen
 
 const routes: Routes = [
   {path: '', component: CategoriaListComponent},
-  {path: 'form', component: CategoriaFormComponent}
+  {path: 'form/:id', component: CategoriaFormComponent}
 ];
 
 @NgModule({

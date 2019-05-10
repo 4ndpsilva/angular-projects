@@ -4,7 +4,7 @@ import { Categoria } from './../../categorias/model/categoria';
 
 export class Lancamento {
   id: number;
-  data: Date;
+  dataLancamento: Date;
   categoria: Categoria;
   conta: Conta;
   tipoOperacao: TipoOperacao;

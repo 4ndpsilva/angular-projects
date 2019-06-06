@@ -6,7 +6,7 @@ import { ContatoFormComponent } from './contato-form/contato-form.component';
 
 const routes: Routes = [
   {path: '', component: ContatoListComponent},
-  {path: '/new', component: ContatoFormComponent},
+  {path: 'new', component: ContatoFormComponent},
   {path: ':id/edit', component: ContatoFormComponent}
 ];
 

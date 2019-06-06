@@ -1,0 +1,7 @@
+<div>
+  <ul *ngFor = "let item of menuItems">
+      <li routerLinkActive = "active">
+        <a [routerLink] = "item.link">{{item.text}}</a>  
+      </li>
+  </ul>
+</div>

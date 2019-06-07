@@ -12,9 +12,12 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void{
     this.menuItems = [
-      {link: '/contatos', text: 'Contatos'},
       {link: '/estados', text: 'Estados'},
-      {link: '/cidades', text: 'Cidades'}
+      {link: '/cidades', text: 'Cidades'},
+      {link: '/contatos', text: 'Contatos'},
+      {link: '/clientes', text: 'Clientes'},
+      {link: '/acordos', text: 'Acordos'},
+      {link: '/guias', text: 'Guias de Pagamentos'}
     ]
   }
 }

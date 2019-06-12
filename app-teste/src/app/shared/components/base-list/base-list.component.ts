@@ -23,9 +23,7 @@ export abstract class BaseListComponent<T extends BaseModel> implements OnInit{
     protected delete(model: T): void{
         if(confirm('Deseja realmente excluir o registro selecionado?')){
           this.service.delete(model.id).subscribe(
-            () => {
-              this.models = this.models.filter(m => m.id != model.id);          
-            },
+            () => this.models = this.models.filter(m => m.id != model.id),
             () => alert("Erro na exclusão")
           );
         }

@@ -12,7 +12,11 @@ export const environment = {
     storageBucket: "testes-a5655.appspot.com",
     messagingSenderId: "675887470483",
     appId: "1:675887470483:web:08d930ce31bfc4cb"
-  }
+  },
+  apiEstados: 'api/estados',
+  apiCidades: 'api/cidades',
+  apiContatos: 'api/contatos',
+  apiClientes: 'api/clientes',
 };
 
 /*

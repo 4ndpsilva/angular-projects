@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
+import { SharedModule } from '../../shared/shared.module';
 import { GuiasPagamentosRoutingModule } from './guias-pagamentos-routing.module';
 import { GuiaPagamentoListComponent } from './guia-pagamento-list/guia-pagamento-list.component';
 
@@ -9,7 +9,7 @@ import { GuiaPagamentoListComponent } from './guia-pagamento-list/guia-pagamento
     GuiaPagamentoListComponent
   ],
   imports: [
-    CommonModule,
+    SharedModule,
     GuiasPagamentosRoutingModule
   ]
 })

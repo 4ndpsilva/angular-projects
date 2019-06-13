@@ -6,7 +6,7 @@ import { EstadoFormComponent } from './estado-form/estado-form.component';
 
 const routes: Routes = [
   {path: '', component: EstadoListComponent},
-  {path: '/new', component: EstadoFormComponent},
+  {path: 'new', component: EstadoFormComponent},
   {path: ':id/edit', component: EstadoFormComponent}
 ];
 

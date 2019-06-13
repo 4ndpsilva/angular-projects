@@ -10,8 +10,8 @@ import { BaseService } from '../../services/base-services';
 
 
 export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, AfterContentChecked {
-  currentAction: string;
   form: FormGroup;
+  currentAction: string;
   pageTitle: string;
   serverErrorMessages: string[] = null;
   submittingForm: boolean = false;
@@ -56,13 +56,15 @@ export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, 
 
   protected abstract buildForm(): void;
 
-  //PRIVATE METHODS
   protected setCurrentAction(): void{
     this.currentAction = (this.route.snapshot.url[0].path == "new")? "new": "edit";
   }
 
   protected loadModel(){
-    if(this.currentAction == "edit"){
+    if(this.currentAction == "new"){
+      this.model = <T>{};
+    }
+    else if(this.currentAction == "edit"){
       this.route.paramMap.pipe(
         switchMap(params => this.service.getById(+params.get("id")))
       )
@@ -83,7 +85,7 @@ export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, 
   }
 
   protected editingPageTitle(): string{
-    return "Edição";
+    return "Alteração";
   }
 
   protected create(): void{
@@ -108,9 +110,19 @@ export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, 
     this.toastr.success("Registro salvo com sucesso!");
     
     const baseComponentPath: string = this.route.snapshot.parent.url[0].path;
-    
+   
+    if(this.currentAction == "new"){
+      this.loadModel();
+      this.router.navigateByUrl(baseComponentPath+'/new', {skipLocationChange: true});
+    }
+    else{
+      this.router.navigateByUrl(baseComponentPath, {skipLocationChange: true});
+    }
+
+    /*
     this.router.navigateByUrl(baseComponentPath, {skipLocationChange: true})
-        .then(() => this.router.navigate([baseComponentPath, model.id, "edit"]));
+          .then(() => this.router.navigate([baseComponentPath, model.id, "edit"])); 
+          */
   }
 
   protected actionsForError(error: any){

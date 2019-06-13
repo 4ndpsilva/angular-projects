@@ -6,7 +6,7 @@ import { AcordoFormComponent } from './acordo-form/acordo-form.component';
 
 const routes: Routes = [
   {path: '', component: AcordoListComponent},
-  {path: '/new', component: AcordoFormComponent},
+  {path: 'new', component: AcordoFormComponent},
   {path: ':id/edit', component: AcordoFormComponent}
 ];
 

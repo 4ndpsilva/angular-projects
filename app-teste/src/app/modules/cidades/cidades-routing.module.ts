@@ -6,7 +6,7 @@ import { CidadeFormComponent } from './cidade-form/cidade-form.component';
 
 const routes: Routes = [
   {path: '', component: CidadeListComponent},
-  {path: '/new', component: CidadeFormComponent},
+  {path: 'new', component: CidadeFormComponent},
   {path: ':id/edit', component: CidadeFormComponent}
 ];
 

@@ -1,3 +1,36 @@
-<h1>
-  estado-form works!
-</h1>
+<app-bread-crumb 
+    [items] = "[{text: 'Estados', link: '/estados'}, {text: pageTitle}]">
+</app-bread-crumb>
+
+<app-page-header
+    [page-title] = "pageTitle" 
+    button-text = "<< Voltar"
+    button-link = "/estados"
+    button-class = "btn-light">
+</app-page-header>
+
+<form [formGroup] = "form" (submit) = "submitForm()">
+    <div class = "card">
+        <div class = "card-header">Informações</div>
+        <div class = "card-body">
+           <div class = "form-row">
+               <!-- Nome -->
+               <div class = "form-group col-md-5">
+                  <label for = "nome">Nome</label>
+                  <input type = "text" id = "nome" class = "form-control" formControlName = "nome">
+                  <app-form-field-error [form-control] = "form.get('nome')"></app-form-field-error>
+               </div>
+               <!-- sigla -->
+               <div class = "form-group col-md-3">
+                    <label for = "sigla">Sigla</label>
+                    <input type = "text" id = "sigla" class = "form-control" formControlName = "sigla" maxlength = "2">
+                    <app-form-field-error [form-control] = "form.get('sigla')"></app-form-field-error>
+                </div>
+           </div>            
+        </div>
+    </div>
+
+    <app-server-error-messages [server-error-messages] = "serverErrorMessages"></app-server-error-messages>
+
+    <button [disabled] = "submittingForm || form.invalid" class = "btn btn-primary btn-lg float-right mt-2">Salvar</button>
+</form>

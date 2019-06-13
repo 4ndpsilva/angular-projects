@@ -1,6 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 
-import { BaseService } from 'src/app/shared/services/base-services';
+import { BaseService } from '../../../shared/services/base-services';
 import { Estado } from './estado';
 import { environment } from 'src/environments/environment';
 

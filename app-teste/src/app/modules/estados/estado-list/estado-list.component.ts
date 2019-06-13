@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { BaseListComponent } from 'src/app/shared/components/base-list/base-list.component';
+import { BaseListComponent } from '../../../shared/components/base-list/base-list.component';
 import { Estado } from '../shared/estado';
 import { EstadoService } from '../shared/estado.service';
 

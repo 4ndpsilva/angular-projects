@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 import { EstadosRoutingModule } from './estados-routing.module';
 import { EstadoListComponent } from './estado-list/estado-list.component';

@@ -15,8 +15,9 @@ export const environment = {
   },
   apiEstados: 'api/estados',
   apiCidades: 'api/cidades',
-  apiContatos: 'api/contatos',
   apiClientes: 'api/clientes',
+  apiAcordos: 'api/acordos',
+  apiGuias: 'api/guias'
 };
 
 /*

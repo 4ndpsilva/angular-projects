@@ -2,7 +2,7 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, flatMap } from 'rxjs/operators';
 
-import { BaseService } from 'src/app/shared/services/base-services';
+import { BaseService } from '../../../shared/services/base-services';
 import { Cidade } from './cidade';
 import { EstadoService } from '../../estados/shared/estado.service';
 import { environment } from 'src/environments/environment';

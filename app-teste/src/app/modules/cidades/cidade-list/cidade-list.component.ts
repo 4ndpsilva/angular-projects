@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-
 import { BaseListComponent } from '../../../shared/components/base-list/base-list.component';
 import { Cidade } from '../shared/cidade';
 import { CidadeService } from '../shared/cidade.service';
+
 
 @Component({
   selector: 'app-cidade-list',

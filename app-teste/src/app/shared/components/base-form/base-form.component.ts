@@ -9,43 +9,43 @@ import { BaseModel } from '../../models/base-model';
 import { BaseService } from '../../services/base-services';
 
 
-export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, AfterContentChecked, AfterViewInit {
+export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, AfterViewInit, AfterContentChecked {
   form: FormGroup;
-  currentAction: string;
   pageTitle: string;
-  serverErrorMessages: string[] = null;
+  currentAction: string;
   submittingForm: boolean = false;
+  serverErrorMessages: string[] = null;
   
-  protected route: ActivatedRoute;
+  protected activatedRoute: ActivatedRoute;
   protected router: Router;
   protected formBuilder: FormBuilder;
   protected toastr: ToastrService;
-
+  
   constructor(
-	  protected injector: Injector,
+    protected injector: Injector,
 	  public model: T,
     protected service: BaseService<T>,
     protected jsonToModelFunction: (jsonData) => T) { 
 
-      this.route = this.injector.get(ActivatedRoute);
+      this.activatedRoute = this.injector.get(ActivatedRoute);
       this.router = this.injector.get(Router);
       this.formBuilder = this.injector.get(FormBuilder);
       this.toastr = this.injector.get(ToastrService);
-  }
+    }
+    
+    ngOnInit(): void{
+      this.setCurrentAction();
+      this.buildForm();
+      this.loadModel();
+    }
+    
+    ngAfterViewInit(): void { 
+      this.autoFocus();
+    }
 
-  ngOnInit(): void{
-    this.setCurrentAction();
-    this.buildForm();
-    this.loadModel();
-  }
-
-  ngAfterContentChecked(): void{
-    this.setPageTitle();
-  }
-
-  ngAfterViewInit(): void { 
-    this.autoFocus();
-  }
+    ngAfterContentChecked(): void{
+      this.setPageTitle();
+    }
 
   submitForm(): void{
     this.submittingForm = true;
@@ -62,7 +62,7 @@ export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, 
   protected abstract autoFocus(): void;
 
   protected setCurrentAction(): void{
-    this.currentAction = (this.route.snapshot.url[0].path == "new")? "new": "edit";
+    this.currentAction = (this.activatedRoute.snapshot.url[0].path == "new")? "new": "edit";
   }
 
   protected loadModel(): void{
@@ -71,7 +71,7 @@ export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, 
       this.form.reset();
     }
     else if(this.currentAction == "edit"){
-      this.route.paramMap.pipe(
+      this.activatedRoute.paramMap.pipe(
         switchMap(params => this.service.getById(+params.get("id")))
       )
       .subscribe((m) => { 
@@ -115,10 +115,11 @@ export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, 
   protected actionsForSuccess(model: T): void{
     this.toastr.success("Registro salvo com sucesso!");
     
-    const baseComponentPath: string = this.route.snapshot.parent.url[0].path;
+    const baseComponentPath: string = this.activatedRoute.snapshot.parent.url[0].path;
    
     if(this.currentAction == "new"){
       this.loadModel();
+      this.router.navigate([baseComponentPath+'/new']);
     }
     else{
       this.router.navigateByUrl(baseComponentPath, {skipLocationChange: true});

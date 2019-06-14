@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-
 import { BaseListComponent } from '../../../shared/components/base-list/base-list.component';
-import { ClienteService } from '../shared/cliente.service';
 import { Cliente } from '../shared/cliente';
+import { ClienteService } from '../shared/cliente.service';
+
 
 @Component({
   selector: 'app-cliente-list',

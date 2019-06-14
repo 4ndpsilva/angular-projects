@@ -1,9 +1,9 @@
-import { Component, Injector, ElementRef, ViewChild } from '@angular/core';
+import { Component, Injector, Renderer2 } from '@angular/core';
 import { Validators } from '@angular/forms';
-
 import { BaseFormComponent } from '../../../shared/components/base-form/base-form.component';
-import { EstadoService } from '../shared/estado.service';
 import { Estado } from '../shared/estado';
+import { EstadoService } from '../shared/estado.service';
+
 
 @Component({
   selector: 'app-estado-form',
@@ -11,11 +11,9 @@ import { Estado } from '../shared/estado';
   styleUrls: ['./estado-form.component.css']
 })
 export class EstadoFormComponent extends BaseFormComponent<Estado>{
-  @ViewChild("nome", {static: false}) nomeField: ElementRef; 
-
   constructor(
     protected injector: Injector,
-    protected service: EstadoService) {
+    protected service: EstadoService, private renderer: Renderer2) {
     super(injector, new Estado(), service, Estado.fromJson);
   }
 
@@ -32,6 +30,6 @@ export class EstadoFormComponent extends BaseFormComponent<Estado>{
   }
 
   protected autoFocus(): void {
-    this.nomeField.nativeElement.focus();
+    this.renderer.selectRootElement('#nome').focus();
   }
 }

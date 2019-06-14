@@ -1,4 +1,4 @@
-import { OnInit, AfterContentChecked, Injector } from '@angular/core';
+import { OnInit, AfterContentChecked, Injector, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -9,7 +9,7 @@ import { BaseModel } from '../../models/base-model';
 import { BaseService } from '../../services/base-services';
 
 
-export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, AfterContentChecked {
+export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, AfterContentChecked, AfterViewInit {
   form: FormGroup;
   currentAction: string;
   pageTitle: string;
@@ -39,11 +39,15 @@ export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, 
     this.loadModel();
   }
 
-  ngAfterContentChecked(){
+  ngAfterContentChecked(): void{
     this.setPageTitle();
   }
 
-  submitForm(){
+  ngAfterViewInit(): void { 
+    this.autoFocus();
+  }
+
+  submitForm(): void{
     this.submittingForm = true;
 
     if(this.currentAction == "new"){
@@ -55,14 +59,16 @@ export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, 
   }
 
   protected abstract buildForm(): void;
+  protected abstract autoFocus(): void;
 
   protected setCurrentAction(): void{
     this.currentAction = (this.route.snapshot.url[0].path == "new")? "new": "edit";
   }
 
-  protected loadModel(){
+  protected loadModel(): void{
     if(this.currentAction == "new"){
-      this.model = <T>{};
+      this.submittingForm = false;
+      this.form.reset();
     }
     else if(this.currentAction == "edit"){
       this.route.paramMap.pipe(
@@ -76,7 +82,7 @@ export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, 
     }
   }
 
-  protected setPageTitle(){
+  protected setPageTitle(): void{
     this.pageTitle = (this.currentAction == "new")? this.creationPageTitle(): this.editingPageTitle();
   }
 
@@ -106,26 +112,20 @@ export abstract class BaseFormComponent<T extends BaseModel> implements OnInit, 
       )
   }
 
-  protected actionsForSuccess(model: T){
+  protected actionsForSuccess(model: T): void{
     this.toastr.success("Registro salvo com sucesso!");
     
     const baseComponentPath: string = this.route.snapshot.parent.url[0].path;
    
     if(this.currentAction == "new"){
       this.loadModel();
-      this.router.navigateByUrl(baseComponentPath+'/new', {skipLocationChange: true});
     }
     else{
       this.router.navigateByUrl(baseComponentPath, {skipLocationChange: true});
     }
-
-    /*
-    this.router.navigateByUrl(baseComponentPath, {skipLocationChange: true})
-          .then(() => this.router.navigate([baseComponentPath, model.id, "edit"])); 
-          */
   }
 
-  protected actionsForError(error: any){
+  protected actionsForError(error: any): void{
     this.toastr.error("Erro ao processar sua requisição");
     this.submittingForm = false;
     this.serverErrorMessages = (error.status === 422)? JSON.parse(error._body).errors: ["Falha na comunicação com o servidor"];

@@ -10,7 +10,7 @@ import { AcordoService } from '../shared/acordo.service';
   styleUrls: ['./acordo-list.component.css']
 })
 export class AcordoListComponent extends BaseListComponent<Cliente>{
-  constructor(protected service: AcordoService) { 
+  constructor(protected service: AcordoService) {
     super(service);
     this.title = "Acordos";
   }

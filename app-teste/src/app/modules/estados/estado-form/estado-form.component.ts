@@ -14,7 +14,8 @@ export class EstadoFormComponent extends BaseFormComponent<Estado>{
   constructor(
     protected injector: Injector,
     protected service: EstadoService, private renderer: Renderer2) {
-    super(injector, new Estado(), service, Estado.fromJson);
+      
+    super(injector, new Estado(), service);
   }
 
   protected buildForm(): void {

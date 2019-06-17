@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class ClienteService extends BaseService<Cliente>{
 
   constructor(protected injector: Injector, private cidadeService: CidadeService) { 
-    super(environment.apiClientes, injector, Cliente.fromJson);
+    super(environment.apiClientes, injector);
   }
 
   create(model: Cliente): Observable<Cliente>{

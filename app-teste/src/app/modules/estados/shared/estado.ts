@@ -6,10 +6,6 @@ export class Estado extends BaseModel{
         public sigla?: string
     ){ super(); }
 
-    static fromJson(jsonData: any): Estado{
-        return Object.assign(new Estado(), jsonData);
-    }
-
     static siglas = [
         'AC', 'AL', 'AP', 'AM', 'BA', 'CE',
         'DF', 'ES', 'GO', 'MA', 'MT', 'MS',

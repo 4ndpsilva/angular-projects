@@ -11,7 +11,7 @@ import { environment } from '../../../../environments/environment';
 @Injectable()
 export class AcordoService  extends BaseService<Acordo>{
   constructor(protected injector: Injector, private clienteService: ClienteService) { 
-    super(environment.apiAcordos, injector, Acordo.fromJson);
+    super(environment.apiAcordos, injector);
   }
 
   create(model: Acordo): Observable<Acordo>{

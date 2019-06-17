@@ -28,7 +28,7 @@
 
     <app-server-error-messages [server-error-messages] = "serverErrorMessages"></app-server-error-messages>
 
-    <button type = "reset" class = "btn btn-primary btn-sm float-right mt-2">Limpar</button>
+    <button type = "reset" (click) = "clearForm()" class = "btn btn-primary btn-sm float-right mt-2">Limpar</button>
     <button [disabled] = "submittingForm || form.invalid"
         class = "btn btn-primary btn-sm float-right mt-2 mr-2">Salvar</button>
 </form>

@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class CidadeService extends BaseService<Cidade>{
   constructor(protected injector: Injector, private estadoService: EstadoService) { 
-    super(environment.apiCidades, injector, Cidade.fromJson);
+    super(environment.apiCidades, injector);
   }
 
   create(model: Cidade): Observable<Cidade>{

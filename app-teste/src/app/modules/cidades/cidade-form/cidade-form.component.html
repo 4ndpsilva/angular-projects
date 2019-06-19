@@ -1,3 +1,40 @@
-<p>
-  cidade-form works!
-</p>
+<app-bread-crumb 
+  [items] = "[{text: 'Cidades', link: '/cidades'}, {text: pageTitle}]">
+</app-bread-crumb>
+
+<app-page-header 
+    [page-title] = "pageTitle" 
+    button-text = "<< Voltar" 
+    button-link = "/cidades" 
+    button-class = "btn-sm btn-light">
+</app-page-header>
+
+<form [formGroup] = "form" (submit) = "submitForm()">
+  <div class = "card">
+    <div class = "card-header">Informações</div>
+    <div class = "card-body">
+      <div class = "form-row">
+        <!-- estado -->
+        <div class = "form-group col-md-2">
+          <label for = "estado">Estado</label>
+          <select id = "estadoId" name = "estadoId" formControlName = "estadoId" class = "form-control">
+            <option *ngFor = "let estado of estados" [value] = "estado.id">{{estado.nome}}</option>
+          </select>
+          <app-form-field-error [form-control] = "form.get('estadoId')"></app-form-field-error>
+        </div>
+        <!-- nome -->
+        <div class = "form-group col-md-5">
+          <label for = "nome">Nome</label>
+          <input type = "text" id = "nome" class = "form-control" formControlName = "nome">
+          <app-form-field-error [form-control] = "form.get('nome')"></app-form-field-error>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-server-error-messages [server-error-messages] = "serverErrorMessages"></app-server-error-messages>
+
+  <button type = "reset" (click) = "clearForm()" class = "btn btn-primary btn-sm float-right mt-2">Limpar</button>
+    <button [disabled] = "submittingForm || form.invalid"
+        class = "btn btn-primary btn-sm float-right mt-2 mr-2">Salvar</button>
+</form>

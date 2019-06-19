@@ -1,30 +1,34 @@
-<app-bread-crumb [items]="[{text: title}]">
+<app-bread-crumb [items] = "[{text: title}]">
 </app-bread-crumb>
 
-<app-page-header [page-title]="title" button-text="+Novo" button-link="new" button-class="btn-success">
+<app-page-header 
+    [page-title] = "title" 
+    button-text = "+Novo" 
+    button-link = "new" 
+    button-class = "btn-sm btn-success">
 </app-page-header>
 
-<div class="table-responsive">
-    <table class="table table-hover table-sm">
-        <caption *ngIf="models">Total de Registros: {{models.length}}</caption>
+<div class = "table-responsive">
+    <table class = "table table-hover table-sm">
+        <caption *ngIf = "models">Total de Registros: {{models.length}}</caption>
         <thead>
-            <tr class="bg-primary text-light">
+            <tr class = "bg-primary text-light">
                 <th>Nome</th>
                 <th>Cidade</th>
                 <th>E-mail</th>
                 <th>Telefone</th>
-                <th class="text-center">Ações</th>
+                <th class = "text-center">Ações</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let cliente of models">
+            <tr *ngFor = "let cliente of models">
                 <td>{{cliente.nome}}</td>
                 <td>{{cliente.cidade.nome}}</td>
                 <td>{{cliente.email}}</td>
                 <td>{{cliente.telefone}}</td>
-                <td class="text-center">
-                    <a [routerLink]="[cliente.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">Alterar</a>
-                    <button (click)="delete(cliente)" class="btn btn-outline-danger btn-sm">Excluir</button>
+                <td class = "text-center">
+                    <a [routerLink] = "[cliente.id, 'edit']" class = "btn btn-outline-info btn-sm mr-2">Alterar</a>
+                    <button (click) = "delete(cliente)" class = "btn btn-outline-danger btn-sm">Excluir</button>
                 </td>
             </tr>
         </tbody>

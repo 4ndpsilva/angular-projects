@@ -1,3 +1,62 @@
-<p>
-  cliente-form works!
-</p>
+<app-bread-crumb 
+  [items] = "[{text: 'Clientes', link: '/clientes'}, {text: pageTitle}]">
+</app-bread-crumb>
+
+<app-page-header 
+    [page-title] = "pageTitle" 
+    button-text = "<< Voltar" 
+    button-link = "/clientes" 
+    button-class = "btn-sm btn-light">
+</app-page-header>
+
+<form [formGroup] = "form" (submit) = "submitForm()">
+  <div class = "card">
+    <div class = "card-header">Informações</div>
+    <div class = "card-body">
+      <div class = "form-row">
+        <!-- nome -->
+        <div class = "form-group col-md-5">
+          <label for = "nome">Nome</label>
+          <input type = "text" id = "nome" class = "form-control" formControlName = "nome">
+          <app-form-field-error [form-control] = "form.get('nome')"></app-form-field-error>
+        </div>
+        <!-- estado -->
+        <div class = "form-group col-md-2">
+          <label for = "estado">Estado</label>
+          <select id = "estadoId" name = "estadoId" class = "form-control" 
+            (change) = "onChangeEstado($event)">
+            <option value = "">Selecione um estado...</option>
+            <option *ngFor = "let estado of estados" [value] = "estado.id">{{estado.nome}}</option>
+          </select>
+        </div>
+        <!-- cidade -->
+        <div class = "form-group col-md-4">
+          <label for = "cidade">Cidade</label>
+          <select id = "cidadeId" name = "cidadeId" formControlName = "cidadeId" class = "form-control">
+              <option value = "">Selecione uma cidade...</option>
+            <option *ngFor = "let cidade of cidades" [value] = "cidade.id">{{cidade.nome}}</option>
+          </select>
+          <app-form-field-error [form-control] = "form.get('cidadeId')"></app-form-field-error>
+        </div>
+      </div>
+      <div class = "form-row">
+        <!-- telefone -->
+        <div class = "form-group col-md-5">
+          <label for = "telefone">Telefone</label>
+          <input type = "text" id = "telefone" class = "form-control" formControlName = "telefone">
+        </div>
+        <!-- email -->
+        <div class = "form-group col-md-5">
+          <label for = "email">E-mail</label>
+          <input type = "text" id = "email" class = "form-control" formControlName = "email">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-server-error-messages [server-error-messages] = "serverErrorMessages"></app-server-error-messages>
+
+  <button type = "reset" (click) = "clearForm()" class = "btn btn-primary btn-sm float-right mt-2">Limpar</button>
+    <button [disabled] = "submittingForm || form.invalid"
+        class = "btn btn-primary btn-sm float-right mt-2 mr-2">Salvar</button>
+</form>

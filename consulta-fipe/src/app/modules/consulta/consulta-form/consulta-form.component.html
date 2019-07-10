@@ -2,15 +2,16 @@
   <h2 class = "text-center">{{title}}</h2>
  
   <form #formConsulta = "ngForm" (ngSubmit) = "onSearch()">
+    <!--tipo veículo-->
     <div class = "form-group">
       <strong><label>Tipo de Veículo</label></strong>
       <select [(ngModel)] = "filter.tipoVeiculo" (change) = "onSelectTipoVeiculo()" 
-        class = "form-control" required name = "tipoVeiculo">
+        class = "form-control" required name = "tipoVeiculo" id = "tipoVeiculo">
         <option></option>
         <option *ngFor = "let tipo of tipos" value = "{{tipo.valor}}">{{tipo.descricao}}</option>
       </select>
     </div>
-
+    <!--marca-->
     <div class = "form-group">
       <strong><label>Marca</label></strong>
       <select [(ngModel)] = "filter.marca" (change) = "onSelectMarca()" 
@@ -19,7 +20,7 @@
         <option *ngFor = "let marca of marcas" value = "{{marca.id}}">{{marca.name}}</option>
       </select>
     </div>
-
+    <!--modelo do veículo-->
     <div class = "form-group">
       <strong><label>Modelo</label></strong>
       <select [(ngModel)] = "filter.modelo" (change) = "onSelectModelo()" name = "modelo"
@@ -28,7 +29,7 @@
         <option *ngFor = "let modelo of modelos" value = "{{modelo.id}}">{{modelo.name}}</option>
       </select>
     </div>
-
+    <!--ano modelo-->
     <div class = "form-group">
       <strong><label>Ano</label></strong>
       <select [(ngModel)] = "filter.ano" class = "form-control" name = "ano" required>

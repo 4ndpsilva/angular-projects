@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { TipoVeiculo } from '../model/tipo-veiculo.model';
 import { FipeService } from '../service/fipe.service';
+import { ConsultaDetailComponent } from './../consulta-detail/consulta-detail.component';
 
 
 @Component({
@@ -11,7 +14,6 @@ import { FipeService } from '../service/fipe.service';
   styleUrls: ['./consulta-form.component.css']
 })
 export class ConsultaFormComponent implements OnInit {
-  title = 'Consulta FIPE';
   tipos: Array<TipoVeiculo>;
   marcas: Array<any> = [];
   modelos: Array<any> = [];
@@ -19,7 +21,7 @@ export class ConsultaFormComponent implements OnInit {
   filter: any = {};
   result: any;
 
-  constructor(private service: FipeService, private router: Router){}
+  constructor(private modalService: NgbModal, private service: FipeService){}
 
   ngOnInit(): void{
     this.tipos = this.service.tipos;
@@ -44,7 +46,8 @@ export class ConsultaFormComponent implements OnInit {
 
   onSearch(): void{
     this.service.search(this.filter).subscribe(data => this.result = data);
-    this.router.navigate(['/search']);
+    const modal = this.modalService.open(ConsultaDetailComponent);
+    modal.componentInstance.result = this.result;
   }
 
   reset(): void{

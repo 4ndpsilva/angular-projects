@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-consulta-detail',
@@ -8,9 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./consulta-detail.component.css']
 })
 export class ConsultaDetailComponent{
-  constructor(private router: Router) { }
+  @Input() result: any;
+  
+  constructor(private activeModal: NgbActiveModal) { }
 
   voltar(): void{
-    this.router.navigate(['/fipe']);
+    this.activeModal.dismiss();
   }
 }

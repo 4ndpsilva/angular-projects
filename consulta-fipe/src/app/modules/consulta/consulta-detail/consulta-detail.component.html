@@ -1,38 +1,47 @@
-<ul class = "list-group">
-  <li class = "list-group-item d-flex justify-content-between">
-    <div><h6>Mês de Referência</h6></div>
-    <span class = "text-muted">{{result.referencia | uppercase}}</span>
-  </li>
-  <li class = "list-group-item d-flex justify-content-between">
-    <div><h6>Código Fipe</h6></div>
-    <span class = "text-muted">{{result.fipe_codigo}}</span>
-  </li>
-  <li class = "list-group-item d-flex justify-content-between">
-    <div><h6>Marca</h6></div>
-    <span class = "text-muted">{{result.marca | uppercase}}</span>
-  </li>
-  <li *ngIf = "result.name.length <= 31" class = "list-group-item d-flex justify-content-between">
-    <div><h6>Modelo</h6></div>
-    <span class = "text-muted">{{result.name | uppercase}}</span>
-  </li>
-  <li *ngIf = "result.name.length > 31" class = "list-group-item" >
-    <div><h6>Modelo</h6></div>
-    <span class = "text-muted">{{result.name | uppercase}}</span>
-  </li>
-  <li class = "list-group-item d-flex justify-content-between">
-    <div><h6>Ano</h6></div>
-    <span class = "text-muted">{{result.ano_modelo}}</span>
-  </li>
-  <li class = "list-group-item d-flex justify-content-between">
-    <div><h6>Combustível</h6></div>
-    <span class = "text-muted">{{result.combustivel | uppercase}}</span>
-  </li>
-  <li class = "list-group-item d-flex justify-content-between">
-    <div><h6>Preço Médio</h6></div>
-    <span class = "text-muted">{{result.preco}}</span>
-  </li>
-</ul>
+<div class = "modal-header">
+    <h4 class = "modal-title">Resultado da Consulta</h4>
+    <button type = "button" class = "close" aria-label = "Close" (click) = "activeModal.dismiss('')">
+        <span aria-hidden = "true">&times;</span>
+    </button>
+</div>
 
-<p></p>
+<div class = "modal-body">
+  <ul class = "list-group">
+      <li class = "list-group-item d-flex justify-content-between">
+        <div><h6>Mês de Referência</h6></div>
+        <span class = "text-muted">{{result.referencia | uppercase}}</span>
+      </li>
+      <li class = "list-group-item d-flex justify-content-between">
+        <div><h6>Código Fipe</h6></div>
+        <span class = "text-muted">{{result.fipe_codigo}}</span>
+      </li>
+      <li class = "list-group-item d-flex justify-content-between">
+        <div><h6>Marca</h6></div>
+        <span class = "text-muted">{{result.marca | uppercase}}</span>
+      </li>
+      <li *ngIf = "result.name.length <= 31" class = "list-group-item d-flex justify-content-between">
+        <div><h6>Modelo</h6></div>
+        <span class = "text-muted">{{result.name | uppercase}}</span>
+      </li>
+      <li *ngIf = "result.name.length > 31" class = "list-group-item" >
+        <div><h6>Modelo</h6></div>
+        <span class = "text-muted">{{result.name | uppercase}}</span>
+      </li>
+      <li class = "list-group-item d-flex justify-content-between">
+        <div><h6>Ano</h6></div>
+        <span class = "text-muted">{{result.ano_modelo}}</span>
+      </li>
+      <li class = "list-group-item d-flex justify-content-between">
+        <div><h6>Combustível</h6></div>
+        <span class = "text-muted">{{result.combustivel | uppercase}}</span>
+      </li>
+      <li class = "list-group-item d-flex justify-content-between">
+        <div><h6>Preço Médio</h6></div>
+        <span class = "text-muted">{{result.preco}}</span>
+      </li>
+    </ul>
+</div>
 
-<button type = "button" class = "btn btn-primary btn-block" (click) = "voltar()">Voltar</button>
+<div class = "modal-footer">
+  <button type = "button" class = "btn btn-primary btn-block" (click) = "voltar()">Voltar</button>
+</div>

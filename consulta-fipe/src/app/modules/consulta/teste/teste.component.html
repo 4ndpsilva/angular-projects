@@ -1,0 +1,16 @@
+<form #form = "ngForm" (ngSubmit) = "onSearch()">
+    <!--tipo veículo-->
+    <p-autoComplete 
+        [(ngModel)] = "filter.tipoVeiculo" 
+        [suggestions] = "tiposFiltered"
+        (onSelect) = "onSelectTipoVeiculo($event)" 
+        (completeMethod) = "listarSugestoes($event)"
+        [size] = "30" [minLength] = "1" 
+        [dropdown] = "true" field = "tipoVeiculo">
+
+        <ng-template let-tipo pTemplate = "item">{{tipo}}</ng-template>
+    </p-autoComplete>
+    <button p-button type = "submit" [disabled] = "form.invalid" class = "ui-button-info" label = "Consultar"></button>
+
+    <button p-button type = "reset" (click) = "reset()" class = "ui-button-info" label = "Limpar"></button>
+</form>

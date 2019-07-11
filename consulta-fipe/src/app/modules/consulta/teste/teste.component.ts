@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TipoVeiculo } from '../model/tipo-veiculo.model';
 import { FipeService } from '../service/fipe.service';
+import { TipoVeiculo } from './../model/tipo-veiculo.model';
 
 
 @Component({
-  selector: 'app-consulta-form',
-  templateUrl: './consulta-form.component.html',
-  styleUrls: ['./consulta-form.component.css']
+  selector: 'app-teste',
+  templateUrl: './teste.component.html',
+  styleUrls: ['./teste.component.css']
 })
-export class ConsultaFormComponent implements OnInit {
+export class TesteComponent implements OnInit {
   tipos: Array<TipoVeiculo>;
+  tiposFiltered: any[];
   marcas: Array<any> = [];
   modelos: Array<any> = [];
   anos: Array<any> = [];
@@ -23,8 +24,17 @@ export class ConsultaFormComponent implements OnInit {
     this.tipos = this.service.tipos;
   }
 
+  listarSugestoes(event?: any){
+    this.tiposFiltered = [];
+    this.tipos
+      .filter(t => t.descricao.toLocaleLowerCase().indexOf(event.query.toLowerCase()) == 0)
+      .map(tipo => this.tiposFiltered.push(tipo.descricao));
+    
+  }
+
   onSelectTipoVeiculo(event?: any): void{
     this.reset();
+    console.log(this.filter.tipoVeiculo);
     this.service.findByTipoVeiculo(this.filter).subscribe(data => this.marcas = data);
   }
 
@@ -40,7 +50,7 @@ export class ConsultaFormComponent implements OnInit {
     this.service.findByModelo(this.filter).subscribe(data => this.anos = data);  
   }
 
-  onSearch(event?: any): void{
+  onSearch(): void{
     this.service.search(this.filter).subscribe(data => this.result = data);
   }
 

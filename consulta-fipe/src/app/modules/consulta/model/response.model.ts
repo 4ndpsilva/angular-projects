@@ -1,6 +1,6 @@
-export class Response {
+export interface Response {
     mesReferencia: string;
-    dataConsulta: Date;
+    dataConsulta: string;
     codigoFipe: string;
     marca: string;
     modelo: string;

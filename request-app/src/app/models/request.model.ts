@@ -1,6 +1,6 @@
-import { BaseModel } from './base-model'
-import { Department } from './department'
-import { Employee } from './employee'
+import { BaseModel } from './base-model.model'
+import { Department } from './department.model'
+import { Employee } from './employee.model'
 
 export class Request extends BaseModel{
 	requester: string;
@@ -9,10 +9,10 @@ export class Request extends BaseModel{
 	description: string;
 	status: string;
 	destiny: Department;
-	moves: Array<Movimentacao>;
+	moves: Array<Moviment>;
 }
 
-class Movimentacao extends BaseModel{
+class Moviment extends BaseModel{
 	employee: Employee;
 	dateTime: Date;
 	description: string;

@@ -1,6 +1,6 @@
-import { BaseModel } from './base-model'
+import { BaseModel } from './base-model.model'
 
 export class Department extends BaseModel {
-	var name: string;
-	var phoneNumber?: string;
+	name: string;
+	phoneNumber?: string;
 }

@@ -1,10 +1,10 @@
-import { BaseModel } from './base-model'
-import { Department } from './department'
+import { BaseModel } from './base-model.model';
+import { Department } from './department.model';
 
 export class Employee extends BaseModel{
-	var name: string;
-	var office: string;
-	var email: string;
-	var lastAccess: Date;
-	var department: Department;
+	name: string;
+	office: string;
+	email: string;
+	lastAccess: Date;
+	department: Department;
 }

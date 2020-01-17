@@ -1,5 +1,5 @@
 enum Path{
     DEPARTMENTS = 'departments',
-    EMPLOYEES = 'employess',
-    REQUESTS = 'requests'
+    EMPLOYEES   = 'employess',
+    REQUESTS    = 'requests'
 }

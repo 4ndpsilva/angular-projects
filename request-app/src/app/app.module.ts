@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
-import { LoginComponent } from './components/login/login.component'
+import { LoginComponent } from './components/public/login/login.component'
 
 @NgModule({
   declarations: [

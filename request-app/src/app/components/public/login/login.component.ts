@@ -66,5 +66,12 @@ export class LoginComponent implements OnInit {
       input: 'email',
       inputPlaceholder: 'email'
     });
+
+    if(email){
+      this.auth.resetPassword(email).then(() => {
+        this.sendEmail = true;
+        this.message = `E-mail enviado para ${email} com instruções para recuperação`
+      });
+    }
   }
 }

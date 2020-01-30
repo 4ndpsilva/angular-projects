@@ -1,14 +1,27 @@
-<div class="container">
-    <div class="card-deck mt-5">
+<div class="container-fluid mt-5">
+    <div class="card-deck">
         <app-totalizer-content 
-            [title] = "bets15"
-            [content] = "totalizer?.highestPrize15" 
-            [detail] = "msgHighest15">
+            [title]="bets15" 
+            [content-value1]="totalizer?.highestPrize15" 
+            [detail1]="msgHighest"
+            [content-value2]="totalizer?.lowestPrize15" 
+            [detail2]="msgLowest">
         </app-totalizer-content>
+        
         <app-totalizer-content 
-            [title] = "bets15"
-            [content] = "totalizer?.lowestPrize15" 
-            [detail] = "msgLowest15">
+            [title]="bets14" 
+            [content-value1]="totalizer?.highestPrize14" 
+            [detail1]="msgHighest"
+            [content-value2]="totalizer?.lowestPrize14" 
+            [detail2]="msgLowest">
+        </app-totalizer-content>
+
+        <app-totalizer-content 
+            [title]="accumulatedBets" 
+            [content-value1]="totalizer?.highestCumulativeValue" 
+            [detail1]="msgHighestAccumulated"
+            [content-value2]="totalizer?.lowestCumulativeValue" 
+            [detail2]="msgLowestAccumulated">
         </app-totalizer-content>
     </div>
 </div>

@@ -9,9 +9,15 @@ export class TotalizerContentComponent {
   @Input()
   title: string;
 
-  @Input()
-  content: string;
+  @Input("content-value1")
+  contentValue1: string;
+
+  @Input("content-value2")
+  contentValue2: string;
   
   @Input()
-  detail: string;
+  detail1: string;
+
+  @Input()
+  detail2: string;
 }

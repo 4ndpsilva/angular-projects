@@ -1,28 +1,14 @@
 <div class="container">
     <div class="card-deck mt-5">
-        <div class="card text-center">
-            <div class="card-body">
-                <h1 class="card-title">{{totalizer?.highestPrize15 | currency: 'BRL': true}}</h1>
-                <p class="card-text">Maior prêmio sorteado de 15 dezenas</p>
-            </div>
-        </div>
-        <div class="card text-center">
-            <div class="card-body">
-                <h1 class="card-title">{{totalizer?.lowestPrize15 | currency: 'R$'}}</h1>
-                <p class="card-text">Menor prêmio sorteado de 15 acertos</p>
-            </div>
-        </div>
-        <div class="card text-center">
-            <div class="card-body">
-                <h1 class="card-title">{{totalizer?.highestPrize14 | currency: 'R$'}}</h1>
-                <p class="card-text">Maior prêmio sorteado 14 dezenas</p>
-            </div>
-        </div>
-        <div class="card text-center">
-            <div class="card-body">
-                <h1 class="card-title">{{totalizer?.lowestPrize14 | currency: 'R$'}}</h1>
-                <p class="card-text">Menor prêmio sorteado de 14 dezenas</p>
-            </div>
-        </div>
+        <app-totalizer-content 
+            [title] = "bets15"
+            [content] = "totalizer?.highestPrize15" 
+            [detail] = "msgHighest15">
+        </app-totalizer-content>
+        <app-totalizer-content 
+            [title] = "bets15"
+            [content] = "totalizer?.lowestPrize15" 
+            [detail] = "msgLowest15">
+        </app-totalizer-content>
     </div>
 </div>

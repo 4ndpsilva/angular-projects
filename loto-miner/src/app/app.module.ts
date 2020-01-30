@@ -5,12 +5,14 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt'; 
 
 import { AppComponent } from './app.component';
+import { TotalizerContentComponent } from './components/totalizer-content/totalizer-content.component';
 
 registerLocaleData(localePt)
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TotalizerContentComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiPath: 'http://localhost:8080/lotominer'
+  apiPath: 'http://localhost:8080/loto-miner'
 };
 
 /*

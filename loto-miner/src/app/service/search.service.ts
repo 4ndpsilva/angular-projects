@@ -7,9 +7,11 @@ import { environment } from './../../environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class SearchService {
+  url = "lotofacil";
+
   constructor(private http: HttpClient) { }
 
   search(): Observable<Totalizer>{
-    return this.http.get<Totalizer>(environment.apiPath);
+    return this.http.get<Totalizer>(`${environment.apiPath}/${this.url}`);
   }
 }
